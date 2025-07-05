@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema Gardem - Estructura de Datos</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .table-container {
+            overflow-x: auto;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+        
+        th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px 15px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 1.1em;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        td {
+            padding: 18px 15px;
+            border-bottom: 1px solid #f0f0f0;
+            transition: background-color 0.3s ease;
+        }
+        
+        tr:hover td {
+            background-color: #f8f9ff;
+        }
+        
+        tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .entity-name {
+            font-weight: 700;
+            color: #667eea;
+            font-size: 1.1em;
+        }
+        
+        .description {
+            color: #555;
+            line-height: 1.6;
+        }
+        
+        .example {
+            color: #888;
+            font-style: italic;
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+                margin: 10px;
+            }
+            
+            h1 {
+                font-size: 2em;
+            }
+            
+            th, td {
+                padding: 12px 10px;
+            }
+            
+            th {
+                font-size: 1em;
+            }
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 4px 8px;
+            background: #e3f2fd;
+            color: #1976d2;
+            border-radius: 12px;
+            font-size: 0.8em;
+            font-weight: 500;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Sistema Gardem</h1>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Entidad</th>
+                        <th>Descripción</th>
+                        <th>Función en el Sistema</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="entity-name">Producto</td>
+                        <td class="description">
+                            Representa un artículo individual en el catálogo de Gardem.
+                            <div class="example">Ejemplo: Camiseta básica, Pantalón deportivo</div>
+                        </td>
+                        <td>
+                            Base del catálogo <span class="badge">Núcleo</span>
+                            <div class="example">Contiene información básica del artículo</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="entity-name">Categoría</td>
+                        <td class="description">
+                            Organiza los productos en grupos lógicos para facilitar la navegación.
+                            <div class="example">Ejemplo: "Ropa Interior Hombre", "Deportiva Mujer"</div>
+                        </td>
+                        <td>
+                            Clasificación <span class="badge">Organización</span>
+                            <div class="example">Mejora la experiencia de búsqueda</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="entity-name">Talla</td>
+                        <td class="description">
+                            Define las opciones de tamaño disponibles para un producto específico.
+                            <div class="example">Ejemplo: XS, S, M, L, XL, XXL</div>
+                        </td>
+                        <td>
+                            Variante de producto <span class="badge">Atributo</span>
+                            <div class="example">Permite personalización del pedido</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="entity-name">Color</td>
+                        <td class="description">
+                            Define las opciones de color disponibles para un producto específico.
+                            <div class="example">Ejemplo: Azul marino, Rojo, Blanco, Negro</div>
+                        </td>
+                        <td>
+                            Variante de producto <span class="badge">Atributo</span>
+                            <div class="example">Amplía opciones de personalización</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="entity-name">ItemCesta</td>
+                        <td class="description">
+                            Representa un producto específico dentro de la cesta de pedido del cliente.
+                            <div class="example">Ejemplo: 1x Camiseta Azul Talla M</div>
+                        </td>
+                        <td>
+                            Elemento de compra <span class="badge">Transacción</span>
+                            <div class="example">Vincula producto con cantidad y variantes</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="entity-name">Cesta</td>
+                        <td class="description">
+                            Agrupa los ItemCesta de un cliente antes de que se envíe el pedido.
+                            <div class="example">Ejemplo: Carrito de compras temporal</div>
+                        </td>
+                        <td>
+                            Contenedor de compra <span class="badge">Proceso</span>
+                            <div class="example">Facilita la gestión pre-pedido</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="entity-name">Administrador</td>
+                        <td class="description">
+                            Representa al usuario de Gardem con permisos para gestionar el catálogo.
+                            <div class="example">Ejemplo: Gestor de productos, Supervisor de ventas</div>
+                        </td>
+                        <td>
+                            Usuario privilegiado <span class="badge">Gestión</span>
+                            <div class="example">Control total del sistema</div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
